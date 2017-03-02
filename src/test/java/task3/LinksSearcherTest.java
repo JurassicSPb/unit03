@@ -50,5 +50,4 @@ public class LinksSearcherTest {
                 linksSearcher.getAllSentencesWithLinks().contains("Рис."));
     }
 
-
 }
