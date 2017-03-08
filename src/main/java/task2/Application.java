@@ -17,7 +17,7 @@ public class Application {
     public void init() throws IOException {
         chooseLanguage();
         setLocaleAndBundle();
-        getQuestions();
+        getKeys();
         showQuestions();
         showAnswers();
     }
@@ -47,7 +47,7 @@ public class Application {
         }
     }
 
-    public ArrayList<String> getQuestions() throws MissingResourceException {
+    public ArrayList<String> getKeys() throws MissingResourceException {
         if (questions == null) {
             throw new NullPointerException("Empty data");
         }
@@ -55,23 +55,23 @@ public class Application {
     }
 
     public void showQuestions() throws MissingResourceException {
-        if (questions == null || getQuestions() == null) {
+        if (questions == null || getKeys() == null) {
             throw new NullPointerException("Empty data");
         }
-        for (String value : getQuestions()) {
+        for (String value : getKeys()) {
             System.out.println(questions.getString(value));
         }
     }
 
     public void showAnswers() throws IOException, MissingResourceException {
-        if (getQuestions()==null || answers == null) {
+        if (getKeys()==null || answers == null) {
             throw new NullPointerException("Empty data");
         }
         System.out.println("Press \"q\" to exit");
         System.out.println("Press \"b\" to return to menu");
 
         while ((input = reader.readLine()) != null) {
-            if (getQuestions().contains(input)) {
+            if (getKeys().contains(input)) {
                 System.out.println(answers.getString(input));
             } else if (quit().equals(input)) {
                 System.exit(0);
