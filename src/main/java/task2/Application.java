@@ -55,22 +55,21 @@ public class Application {
     }
 
     public void showQuestions() throws MissingResourceException {
-        if (questions == null) {
+        if (questions == null || getQuestions() == null) {
             throw new NullPointerException("Empty data");
         }
-        getQuestions();
         for (String value : getQuestions()) {
             System.out.println(questions.getString(value));
         }
     }
 
     public void showAnswers() throws IOException, MissingResourceException {
-        if (answers == null) {
+        if (getQuestions()==null || answers == null) {
             throw new NullPointerException("Empty data");
         }
         System.out.println("Press \"q\" to exit");
         System.out.println("Press \"b\" to return to menu");
-        getQuestions();
+
         while ((input = reader.readLine()) != null) {
             if (getQuestions().contains(input)) {
                 System.out.println(answers.getString(input));
